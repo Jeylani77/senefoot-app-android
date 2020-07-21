@@ -15,6 +15,6 @@ public interface ApiInterface {
     Call<List<Equipe>> listeEquipes(@Query("nomCategorie") String nomCategorie );
 
     @GET("rencontre.php")
-    Call<List<Rencontre>> listeRencontres();
+    Call<List<Rencontre>> listeRencontres(@Query("statut") String statut);
 
 }

@@ -2,31 +2,25 @@ package com.example.senefoot;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.senefoot.adapter.EquipeAdapter;
 import com.example.senefoot.fragment.EquipeFragment;
+import com.example.senefoot.fragment.HomeFragment;
 import com.example.senefoot.fragment.RecontreFragment;
 import com.example.senefoot.model.Equipe;
-import com.example.senefoot.rest.ApiClient;
 import com.example.senefoot.rest.ApiInterface;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
     private ApiInterface apiService;
@@ -42,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
+                case R.id.nav_live:
+                    showFragment(new HomeFragment());
+                    return true;
                 case R.id.nav_matches:
                     showFragment(new RecontreFragment());
 
@@ -64,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.bnv_main);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        showFragment(new RecontreFragment());
+        showFragment(new HomeFragment());
 
     }
 

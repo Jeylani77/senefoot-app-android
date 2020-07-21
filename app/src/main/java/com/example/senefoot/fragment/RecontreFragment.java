@@ -12,6 +12,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ProgressBar;
+import android.widget.Spinner;
 
 import com.example.senefoot.R;
 import com.example.senefoot.adapter.EquipeAdapter;
@@ -34,7 +37,9 @@ public class RecontreFragment extends Fragment {
     public static String met="";
     private RencontreAdapter rencontreAdapter;
     private RecyclerView mRecyclerView;
+    private ProgressBar pb_rencontre;
     private RecyclerView.LayoutManager mLayoutManager;
+    private String statut="";
     public RecontreFragment() {
         // Required empty public constructor
     }
@@ -45,12 +50,32 @@ public class RecontreFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_recontre, container, false);
+
     }
 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
+
+        pb_rencontre = (ProgressBar) view.findViewById(R.id.pb_rencontre);
+        pb_rencontre.setVisibility(View.VISIBLE);
+        Spinner mySpinner = (Spinner) view.findViewById(R.id.spin_league);
+        mySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                statut = adapterView.getItemAtPosition(i).toString();
+                loadData();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
         mRecyclerView = (RecyclerView)view.findViewById(R.id.rv_rencontre);
 
+    }
+    public void loadData() {
+        pb_rencontre.setVisibility(View.VISIBLE);
         mRecyclerView.setHasFixedSize(true);
         //mLayoutManager = new GridLayoutManager(MetsActivity.this,2,GridLayoutManager.VERTICAL,false);
         mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext(), LinearLayoutManager.VERTICAL,false);
@@ -62,7 +87,7 @@ public class RecontreFragment extends Fragment {
 
         //Integrate Retrofit
         apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<List<Rencontre>> call= apiService.listeRencontres();
+        Call<List<Rencontre>> call= apiService.listeRencontres(statut);
         /*Log the URL called*/
         Log.d("URL Called", call.request().url() + "");
 
@@ -70,7 +95,7 @@ public class RecontreFragment extends Fragment {
             @Override
             public void onResponse(Call<List<Rencontre>> call, Response<List<Rencontre>> response) {
                 Log.d("Tous les rencontres", response.body()+"");
-
+                pb_rencontre.setVisibility(View.GONE);
                 rencontreList = response.body();
                 showRencontre();
             }
@@ -80,9 +105,6 @@ public class RecontreFragment extends Fragment {
                 Log.e("Error",t.getMessage());
             }
         });
-
-
-
     }
     // this method manage the view of Equipes
     public void showRencontre() {

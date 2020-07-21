@@ -2,16 +2,20 @@
 
     <!-- Array -->
     <string-array name="league_list">
-        <item>Sénior</item>
+        <item>Senior</item>
         <item>Cadet</item>
+    </string-array>
+    <string-array name="rencontre_list">
+        <item>Direct</item>
+        <item>Programme</item>
     </string-array>
 
     <!-- String -->
     <string name="app_name">Senefoot</string>
     <string name="slogan_loading">Favorites senegalese team\'s match schedule</string>
-    <string name="nav_matches">Matches</string>
-    <string name="nav_teams">Teams</string>
-    <string name="nav_favorites">Favorites</string>
+    <string name="nav_matches">Rencontres</string>
+    <string name="nav_teams">Equipes</string>
+    <string name="nav_home">Accueil</string>
     <string name="action_about_app">About App</string>
     <string name="btn_next_match">Next Match</string>
     <string name="btn_last_match">Last Match</string>
@@ -22,7 +26,7 @@
     <string name="text_vs">Vs</string>
     <string name="text_home">Home</string>
     <string name="text_away">Away</string>
-    <string name="text_see_details">See Details</string>
+    <string name="text_see_details">Details</string>
     <string name="score_default">0</string>
     <string name="negative">-</string>
     <string name="error_no_connection_title">Oops, your connection seems off…</string>

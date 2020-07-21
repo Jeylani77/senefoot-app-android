@@ -12,6 +12,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.senefoot.MainActivity;
@@ -34,7 +37,9 @@ public class EquipeFragment extends Fragment {
     public static String met="";
     private EquipeAdapter equipeAdapter;
     private RecyclerView mRecyclerView;
+    private ProgressBar pb_team;
     private RecyclerView.LayoutManager mLayoutManager;
+    private String categorie="";
 
     public EquipeFragment() {
         // Required empty public constructor
@@ -49,6 +54,28 @@ public class EquipeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
         mRecyclerView = (RecyclerView)view.findViewById(R.id.rv_team);
+        pb_team = (ProgressBar)view.findViewById(R.id.pb_team);
+        pb_team.setVisibility(View.VISIBLE);
+
+        Spinner mySpinner = (Spinner) view.findViewById(R.id.spin_league);
+        categorie = mySpinner.getSelectedItem().toString();
+        mySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                categorie = adapterView.getItemAtPosition(i).toString();
+                loadData();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
+    }
+    public void loadData() {
+        pb_team.setVisibility(View.VISIBLE);
 
         mRecyclerView.setHasFixedSize(true);
         //mLayoutManager = new GridLayoutManager(MetsActivity.this,2,GridLayoutManager.VERTICAL,false);
@@ -61,16 +88,17 @@ public class EquipeFragment extends Fragment {
 
         //Integrate Retrofit
         apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<List<Equipe>> call= apiService.listeEquipes("senior");
+        Call<List<Equipe>> call= apiService.listeEquipes(categorie);
         /*Log the URL called*/
         Log.d("URL Called", call.request().url() + "");
         call.enqueue(new Callback<List<Equipe>>() {
             @Override
             public void onResponse(Call<List<Equipe>> call, Response<List<Equipe>> response) {
                 Log.d("Tous les équipes", response.body()+"");
-
+                pb_team.setVisibility(View.GONE);
                 equipeList = response.body();
                 showEquipe();
+
             }
 
             @Override
@@ -83,5 +111,7 @@ public class EquipeFragment extends Fragment {
     public void showEquipe() {
         equipeAdapter =new EquipeAdapter(equipeList);
         mRecyclerView.setAdapter(equipeAdapter);
+        //notifyDataSetChanged();
+
     }
 }

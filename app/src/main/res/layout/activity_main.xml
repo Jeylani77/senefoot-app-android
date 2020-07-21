@@ -1,58 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:orientation="vertical"
-
-    >
-<androidx.appcompat.widget.Toolbar
-    android:id="@+id/toolbar"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="?attr/colorPrimary"
-    android:minHeight="?attr/actionBarSize"
-    android:theme="?attr/actionBarTheme"
-    >
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Football Teams"
-        android:textColor="@color/white"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        />
+    android:layout_height="match_parent"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    tool:context="com.example.senefoot.MainActivity">
 
-</androidx.appcompat.widget.Toolbar>
 
-<Spinner
-    android:id="@+id/spin_league"
-    android:layout_height="55dp"
-    android:layout_width="match_parent"
-    android:entries="@array/league_list"
-    android:background="@color/white"
-    android:layout_margin="@dimen/default_margin"
-    />
-
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginRight="@dimen/default_margin"
-    android:layout_marginLeft="@dimen/default_margin">
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_team"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="@dimen/default_margin"/>
+        android:layout_height="wrap_content">
 
-    <ProgressBar
-        android:id="@+id/pb_team"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:visibility="gone" />
-    >
+        <FrameLayout
+            android:id="@+id/fl_container_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/bnv_main" />
 
-</RelativeLayout>
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bnv_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@android:color/background_light"
+            android:theme="@style/BottomNavigationViewTheme"
+            app:menu="@menu/bnv_main" />
+
+    </RelativeLayout>
 
 </LinearLayout>

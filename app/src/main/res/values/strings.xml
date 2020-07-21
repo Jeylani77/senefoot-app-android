@@ -68,6 +68,6 @@
     <string name="toast_added_to_favorites">Added to Favorites</string>
     <string name="toast_remove_from_favorites">Removed from Favorites</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment">Cette fonctionnalité est en cours de développement...</string>
 
 </resources>

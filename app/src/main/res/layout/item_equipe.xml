@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/default_margin"
+    android:clickable="true"
+    android:focusable="true"
+    android:padding="15dp"
+    app:cardCornerRadius="@dimen/card_corner"
+    >
+
+    <ImageView
+        android:id="@+id/img_team_badge"
+        android:layout_width="@dimen/width_image_adapter_team"
+        android:layout_height="@dimen/height_image_adapter_team"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_margin"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/img_team_badge"
+        app:layout_constraintStart_toEndOf="@+id/img_team_badge"
+        app:layout_constraintTop_toTopOf="@+id/img_team_badge"
+        android:layout_marginLeft="@dimen/default_margin">
+
+        <TextView
+            android:id="@+id/tv_team_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="@dimen/subtitle_size"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/tv_team_stadium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="@dimen/body_size" />
+
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

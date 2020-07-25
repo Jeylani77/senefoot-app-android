@@ -8,7 +8,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
 
-    public static final String BASE_URL = "http://192.168.1.35/senefoot-api/";
+    public static final String BASE_URL = "http://192.168.1.2/senefoot-api/";
+        // "http://192.168.1.35/senefoot-api/";
 
 
 

@@ -6,4 +6,404 @@
     android:layout_height="match_parent"
     tools:context=".activity.DetailsActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/default_padding"
+        android:layout_marginTop="20dp"
+        tools:ignore="MissingConstraints">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_view_match"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:layout_marginBottom="@dimen/default_margin"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            app:cardCornerRadius="@dimen/card_corner"
+            app:cardElevation="@dimen/default_elevation"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/default_padding">
+
+                <TextView
+                    android:id="@+id/tv_date_match"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/lato"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/body_size"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:text="Date du match"/>
+
+                <TextView
+                    android:id="@+id/tv_time_match"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/lato"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/body_size"
+                    app:layout_constraintEnd_toEndOf="@+id/tv_date_match"
+                    app:layout_constraintStart_toStartOf="@+id/tv_date_match"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_date_match"
+                    android:text="Heure"/>
+
+                <TextView
+                    android:id="@+id/tv_vs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/default_margin"
+                    android:fontFamily="@font/lato"
+                    android:text="@string/text_vs"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/body_size"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/tv_time_match"
+                    app:layout_constraintStart_toStartOf="@+id/tv_time_match"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_time_match" />
+
+                <TextView
+                    android:id="@+id/tv_home_score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/default_margin"
+                    android:fontFamily="@font/lato"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="30sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_vs"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_vs"
+                    app:layout_constraintTop_toTopOf="@+id/tv_vs"
+                    android:text="0"
+                    android:layout_marginRight="@dimen/default_margin" />
+
+                <TextView
+                    android:id="@+id/tv_away_score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/default_margin"
+                    android:fontFamily="@font/lato"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="30sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_vs"
+                    app:layout_constraintStart_toEndOf="@+id/tv_vs"
+                    app:layout_constraintTop_toTopOf="@+id/tv_vs"
+                    android:text="0"
+                    android:layout_marginLeft="@dimen/default_margin" />
+
+                <ImageView
+                    android:id="@+id/iv_home_badge"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_home_score"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_home_score"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tv_home_score"
+                    tools:ignore="ContentDescription" />
+
+                <ImageView
+                    android:id="@+id/iv_away_badge"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_away_score"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tv_away_score"
+                    app:layout_constraintTop_toTopOf="@+id/tv_away_score"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:id="@+id/tv_home_team"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:fontFamily="@font/lato"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/body_size"
+                    app:layout_constraintEnd_toEndOf="@+id/iv_home_badge"
+                    app:layout_constraintStart_toStartOf="@+id/iv_home_badge"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_home_badge"
+                    android:text="Equipe"/>
+
+                <TextView
+                    android:id="@+id/tv_away_team"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:fontFamily="@font/lato"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/body_size"
+                    app:layout_constraintEnd_toEndOf="@+id/iv_away_badge"
+                    app:layout_constraintStart_toStartOf="@+id/iv_away_badge"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_away_badge"
+                    android:text="Equipe"/>
+
+                <TextView
+                    android:id="@+id/tv_home"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:layout_marginBottom="@dimen/default_margin"
+                    android:fontFamily="@font/lato"
+                    android:text="@string/text_home"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/body_size"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/iv_home_badge"
+                    app:layout_constraintEnd_toEndOf="@+id/iv_home_badge"
+                    app:layout_constraintStart_toStartOf="@+id/iv_home_badge"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_time_match"
+                    app:layout_constraintVertical_bias="1.0" />
+
+                <TextView
+                    android:id="@+id/tv_away"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:layout_marginBottom="@dimen/default_margin"
+                    android:fontFamily="@font/lato"
+                    android:text="@string/text_away"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/body_size"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/iv_away_badge"
+                    app:layout_constraintEnd_toEndOf="@+id/iv_away_badge"
+                    app:layout_constraintStart_toStartOf="@+id/iv_away_badge"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_time_match" />
+
+                <TextView
+                    android:id="@+id/tv_team_stadium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/lato"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/body_size"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_away_team"
+                    app:layout_constraintTop_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:text="Stade"/>
+
+                <TextView
+                    android:id="@+id/tv_ticket_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/lato"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/body_size"
+                    app:layout_constraintTop_toBottomOf="@id/tv_team_stadium"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:text="Prix du ticket"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cv_view_shot"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:padding="@dimen/default_padding"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato"
+                android:text="@string/text_shots"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/body_size"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_home_shot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/body_size"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_away_shot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/body_size"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cv_view_goal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/default_padding">
+
+            <TextView
+                android:id="@+id/tv_goal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato"
+                android:text="@string/text_goals"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/body_size"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_home_goal"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato"
+                android:gravity="center"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/body_size"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_goal" />
+
+            <TextView
+                android:id="@+id/tv_away_goal"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato"
+                android:gravity="center"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/body_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_goal" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cv_view_yellow_card"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/default_padding">
+
+            <TextView
+                android:id="@+id/tv_yellow_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato"
+                android:text="@string/text_yellow_cards"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/body_size"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_home_yellow_card"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato"
+                android:gravity="center"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/body_size"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_yellow_card" />
+
+            <TextView
+                android:id="@+id/tv_away_yellow_card"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato"
+                android:gravity="center"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/body_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_yellow_card" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cv_view_red_card"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/default_margin">
+
+            <TextView
+                android:id="@+id/tv_red_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato"
+                android:text="@string/text_red_cards"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/body_size"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_home_red_card"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato"
+                android:gravity="center"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/body_size"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_red_card" />
+
+            <TextView
+                android:id="@+id/tv_away_red_card"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato"
+                android:gravity="center"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/body_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_red_card" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    </LinearLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

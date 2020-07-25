@@ -89,6 +89,8 @@ public class EquipeFragment extends Fragment {
         //Integrate Retrofit
         apiService = ApiClient.getClient().create(ApiInterface.class);
         Call<List<Equipe>> call= apiService.listeEquipes(categorie);
+
+
         /*Log the URL called*/
         Log.d("URL Called", call.request().url() + "");
         call.enqueue(new Callback<List<Equipe>>() {
